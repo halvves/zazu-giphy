@@ -11,7 +11,7 @@ module.exports = () => (str, env = {}) => got('api.giphy.com/v1/gifs/search', {
   icon: 'fa-gift',
   title: `Giphy Results ${i + 1}`,
   subtitle: 'Select to copy to the clipboard',
-  value: env['returnRaw'] && env['returnRaw'] == true ? x.images.original.url : x.url,
+  value: env['returnRaw'] && env['returnRaw'] === true ? x.images.original.url : x.url,
   preview: `<style>
     body {
       background: url('${x.images.downsized_medium.url}');
