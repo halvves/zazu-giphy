@@ -1,4 +1,5 @@
 const got = require('got')
+const indexer = (obj, i) => obj[i]
 
 module.exports = () => (str, env = {}) => got('api.giphy.com/v1/gifs/search', {
   json: true,
@@ -11,7 +12,7 @@ module.exports = () => (str, env = {}) => got('api.giphy.com/v1/gifs/search', {
   icon: 'fa-gift',
   title: `Giphy Results ${i + 1}`,
   subtitle: 'Select to copy to the clipboard',
-  value: env['returnRaw'] && env['returnRaw'] === true ? x.images.original.url : x.url,
+  value: env.src_main ? env.src_main.split('.').reduce(indexer, x) : x.url,
   preview: `<style>
     body {
       background: url('${x.images.downsized_medium.url}');
